@@ -5,7 +5,6 @@ import urllib
 import httplib
 import datetime
 import threading
-import simplejson
 from urlparse import urlparse, urlunparse
 
 DIRECTED_VAL = 'd'
