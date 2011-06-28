@@ -225,7 +225,13 @@ class AnalyticsInterface:
 
         return self.construct_query("gci", params)
 
-            
+    def custom_event(self, uid, n, v = None, l = None, st1 = None, st2 = None, st3 = None):
+        """Send custom event"""
+        params   = {"s":uid, "n":n, "v":v, "l":l, "st1":st1, "st2":st2, "st3":st3 }        
+        params = dict((k, v) for k, v in params.iteritems() if v is not None)   
+        
+        return self.construct_query("evt", params)
+    
 def construct_query(api_key, api_server, api_version, msg_type, parameters):
     """Constructs a generic query to the analytics API in the form:
 
