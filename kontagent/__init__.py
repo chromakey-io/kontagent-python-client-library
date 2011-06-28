@@ -1,5 +1,6 @@
 # Kontagent Analytics API interface
 
+import time
 import random
 import urllib
 import httplib
@@ -114,10 +115,10 @@ class AnalyticsInterface:
         return self.construct_query("apr", params)
 
     
-    def page_request(self, uid, uri, requester_ip=None):
+    def page_request(self, uid, uri, timestamp=int(time.time()), requester_ip=None):
         """Generates a Page Request (pgr) Analytics REST API call."""
 
-        params = {"s":uid, "u":uri, "ip":requester_ip}
+        params = {"s":uid, "u":uri, "ts":timestamp, "ip":requester_ip}
         params = dict((k, v) for k, v in params.iteritems() if v is not None)
 
         return self.construct_query("pgr", params)
